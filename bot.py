@@ -1,5 +1,6 @@
 import discord
 import time, datetime
+import json
 
 client = discord.Client()
 
@@ -21,10 +22,11 @@ async def on_message(message):
 async def time_check():
     await client.wait_until_ready()
     counter = 0
-    channel = 
+    channel = 542493356266356736
+    
 
+# get token from file so you don't accidentally reveal it in your github repository
+with open('token.txt','r') as f:
+    token = f.read()
 
-
-
-client.run("NTU0NDcyNzUzNjM4NjcwMzM2.D3h_XA.vevLJJZ6E9i6l3G-Hl7GCvdZNJ0")
-542493356266356736
+client.run(token)
