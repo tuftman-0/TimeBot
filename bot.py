@@ -9,10 +9,12 @@ def str2time(s):
 def time2str(t):
     return '%0.2d:%0.2d' % t
 
-def timediff(t, t0):
-    h, m   = t
+def timediff(t0, dt):
     h0, m0 = t0
-    return (h-h0)%12, (m-m0)%60
+    dh, dm = dt
+    c,  m1 = divmod(m0 + dm, 60)
+    h1 = (h0 + dh + c) % 12
+    return h1, m1
 
 # this could be way more efficient but whatever
 def phonetic(t):
@@ -25,8 +27,6 @@ def phonetic(t):
     words   = hours[h] + ('-' if m > 0 else '') + minutes[m]
     return words
 
-
-    
 
 client = discord.Client()
 
@@ -41,7 +41,7 @@ async def on_message(message):
         return
     if message.content == "!time":
         current = time.strftime("%I:%M")
-        two_to  = phonetic(timediff(str2time(current), (0,-2)))
+        two_to  = phonetic(timediff(str2time(current), (0, 2)))
         await message.channel.send("My clock says two to {0}; does your clock say two to {0} too".format(two_to))
 
 
