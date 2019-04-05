@@ -42,7 +42,7 @@ async def on_message(message):
     if message.content == "!time":
         current = time.strftime("%I:%M")
         two_to  = phonetic(timediff(str2time(current), (0, 2)))
-        await message.channel.send("My clock says two to {0}; does your clock say two to {0} too".format(two_to))
+        await message.channel.send("My clock says two to {0}; does your clock say two to {0} too?".format(two_to))
 
 
 # get token from file so you don't accidentally reveal it in your github repository
