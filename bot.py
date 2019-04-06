@@ -1,6 +1,12 @@
-import discord
-import time
-import json
+import discord, time, json, sys, os
+
+"""
+This program requires an input file "config.json" which should be in the same directory as the project.
+The json file should look like this:
+{
+   "token" : "YOUR TOKEN GOES HERE"
+}
+"""
 
 def str2time(s):
     a,b = map(int,s.split(':'))
@@ -46,7 +52,9 @@ async def on_message(message):
 
 
 # get token from file so you don't accidentally reveal it in your github repository
-with open('config.json','r') as f:
+configpath = os.path.join(os.path.dirname(sys.argv[0]), "config.json")
+print(configpath)
+with open(configpath, 'r') as f:
     data = json.load(f)
     token = data['token']
     client.run(token)
