@@ -26,7 +26,7 @@ def timediff(t0, dt):
 def phonetic(t):
     digits  = ['','one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
     hours   = ['twelve'] + digits[1:] + ['ten', 'eleven']
-    small   = [''] + ['oh-' + x for x in digits[1:]] + ['eleven', 'twelve'] + [x + 'teen' for x in ['thir','four','fif','six','seven','eigh','nine']]
+    small   = [''] + ["o'-" + x for x in digits[1:]] + ['ten', 'eleven', 'twelve'] + [x + 'teen' for x in ['thir','four','fif','six','seven','eigh','nine']]
     large   = [x + ('-' if y != '' else '') + y for x in ['twenty','thirty','forty','fifty','sixty'] for y in digits]
     minutes = small + large
     h, m    = t
